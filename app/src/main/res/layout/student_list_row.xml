@@ -44,7 +44,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView2" />
 
     <CheckBox
-        android:id="@+id/list_row_check_box"
+        android:id="@+id/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

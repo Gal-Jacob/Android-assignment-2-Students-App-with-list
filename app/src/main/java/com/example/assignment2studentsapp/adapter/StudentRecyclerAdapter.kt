@@ -37,14 +37,14 @@ class StudentRecyclerAdapter(
             position = position
         )
 
-
+        val isChecked = students?.get(position)?.isChecked ?: false
         holder.itemLayout.setOnClickListener {
             val intent = Intent(context, StudentDetailsActivity::class.java).apply {
                 putExtra("studentName", students?.get(position)?.name)
                 putExtra("studentId", students?.get(position)?.id)
                 putExtra("studentPhone", students?.get(position)?.phone)
                 putExtra("studentAddress", students?.get(position)?.address)
-
+                putExtra("studentChecked", isChecked)
             }
 
             if (context is Activity) {

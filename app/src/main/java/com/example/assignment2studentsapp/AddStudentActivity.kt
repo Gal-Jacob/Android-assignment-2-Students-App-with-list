@@ -9,6 +9,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.assignment2studentsapp.model.Model
+import com.example.assignment2studentsapp.model.Student
+import com.google.android.material.appbar.MaterialToolbar
 
 class AddStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,15 +32,27 @@ class AddStudentActivity : AppCompatActivity() {
         val studentIdEditText: EditText = findViewById(R.id.student_id_edit_text)
         val studentPhoneEditText: EditText = findViewById(R.id.student_phone_edit_text)
         val studentAddressEditText: EditText = findViewById(R.id.student_address_edit_text)
-        val checkBox: CheckBox = findViewById(R.id.list_row_check_box)
+        val checkBox: CheckBox = findViewById(R.id.checkbox)
 
         saveButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val newStudent = Student(
+                studentNameEditText.text.toString(),
+                studentIdEditText.text.toString(),
+                studentPhoneEditText.text.toString(),
+                studentAddressEditText.text.toString(),
+                false
+            )
+            Model.shared.students.add(newStudent)
+            finish()
         }
 
         cancelButton.setOnClickListener {
-            //close the activity
+            finish()
+        }
+
+        val toolbar: MaterialToolbar = findViewById(R.id.toolbar)
+
+        toolbar.setNavigationOnClickListener {
             finish()
         }
     }
